@@ -1,0 +1,25 @@
+<h1>Listing movies</h1>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movies.each do |movie| %>
+  <tr>
+    <td><%= link_to movie.title, movie%></td>
+    <td><%= movie.rating %></td>
+    <td><%= truncate movie.description%></td>
+    <td><%= link_to 'Edit', edit_movie_path(movie), class: :"btn btn-inverse btn-large" %></td>
+    <td><%= link_to 'Destroy', movie, class: :"btn btn-danger btn-large", confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Movie', new_movie_path, {:class=> "btn btn-primary btn-large"} %>
